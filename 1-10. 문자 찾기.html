@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        /* Plan A
+        for of 문으로 각 string 문자 탐색
+        조건문 세워서 t를 일치할 경우 숫자 카운트
+        카운트 한 숫자 출력
+        */
+        let answer = 0;
+        for (let x of s) {
+          if (x === t) answer += 1;
+          console.log(x, t, answer);
+        }
+        return answer;
+      }
+
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>

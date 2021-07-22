@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        /* Blueprint
+        문자열길이를 숫자로 변환
+        2로 나눈 후 나머지를 더함 (짝수는 나머지가 0)
+        해당하는 순번에 있는 문자 출력
+        */
+        /* 
+        방법 1.
+        const length = s.length;
+        console.log("length:" + length);
+        const target = parseInt(length / 2) + (length % 2);
+        console.log("target:" + target);
+        if (length % 2 === 0) answer = s[target - 1] + s[target];
+        else answer = s[target - 1];
+        */
+        /* 방법 2. substring() 활용        */
+        const mid = Math.floor(s.length / 2);
+        if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+        else answer = s.substring(mid - 1, mid + 1);
+        /*방법 3. substr() 활용
+        const mid = Math.floor(s.length / 2);
+        if (s.length % 2 === 1) answer = s.substr(mid, 1);
+        else answer = s.substr(mid - 1, 2);*/
+        return answer;
+      }
+      console.log(solution("study"));
+    </script>
+  </body>
+</html>

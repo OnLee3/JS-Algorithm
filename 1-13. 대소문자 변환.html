@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        /* 
+        방법 1.
+        let answer = "";
+        for (let x of s) {
+          console.log(x, answer);
+          if (x === x.toUpperCase()) answer += x.toLowerCase();
+          else if (x === x.toLowerCase()) answer += x.toUpperCase();
+        }
+        */
+        // 방법 2. 아스키 코드 활용
+        let answer = "";
+        for (let x of s) {
+          let num = x.charCodeAt();
+          if (num >= 97 && num <= 122) answer += String.fromCharCode(num - 32);
+          else if (num >= 65 && num <= 96)
+            answer += String.fromCharCode(num + 32);
+        }
+        return answer;
+      }
+      console.log(solution("StuDY"));
+    </script>
+  </body>
+</html>
