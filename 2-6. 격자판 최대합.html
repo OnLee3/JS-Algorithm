@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 0;
+        let maxRowSum = Number.MIN_SAFE_INTEGER;
+        let maxColSum = Number.MIN_SAFE_INTEGER;
+        let diagAnswer = 0;
+        let revDiagAnswer = 0;
+
+        //각행과열의합
+        for (i = 0; i < arr.length; i++) {
+          let rowSum = 0;
+          let colSum = 0;
+          for (j = 0; j < arr.length; j++) {
+            rowSum += arr[i][j];
+            colSum += arr[j][i];
+          }
+          if (rowSum > maxRowSum) maxRowSum = rowSum;
+          if (colSum > maxColSum) maxColSum = colSum;
+          if (i === arr.length) return maxColSum, maxRowSum;
+        }
+
+        //두 대각선의 합
+        for (i = 0; i < arr.length; i++) {
+          diagAnswer += arr[i][i];
+          revDiagAnswer += arr[i][arr.length - i - 1];
+          if (i === arr.length) return diagAnswer, revDiagAnswer;
+        }
+
+        // 나온 값 비교
+        answer = Math.max(maxRowSum, maxColSum, diagAnswer, revDiagAnswer);
+        return answer;
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
