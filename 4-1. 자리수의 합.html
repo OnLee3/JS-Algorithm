@@ -6,7 +6,23 @@
   <body>
     <script>
       function solution(n, arr) {
-        let answer;
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+
+        for (let i = 0; i < n; i++) {
+          let sum = 0;
+          let target = String(arr[i]);
+
+          for (let x of target) {
+            sum += Number(x);
+          }
+
+          if (sum > max) {
+            answer = arr[i];
+            max = sum;
+          } else if (sum === max && arr[i] > answer) answer = arr[i];
+        }
+
         return answer;
       }
 
