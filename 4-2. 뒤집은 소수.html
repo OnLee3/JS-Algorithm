@@ -5,11 +5,21 @@
   </head>
   <body>
     <script>
-      function isPrime(num) {
+      function isPrime(reverse) {
+        if (reverse === 1) return false;
+        for (let i = 2; i < Math.sqrt(reverse); i++) {
+          if (reverse % i === 0) return false;
+        }
         return true;
       }
+
       function solution(arr) {
         let answer = [];
+        for (let x of arr) {
+          const reverse = Number(x.toString().split("").reverse().join(""));
+          if (isPrime(reverse)) answer.push(reverse);
+        }
+
         return answer;
       }
 
