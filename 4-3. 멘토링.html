@@ -6,7 +6,20 @@
   <body>
     <script>
       function solution(test) {
-        let answer;
+        let answer = 0;
+        const m = test.length;
+        const n = test[0].length;
+        // (i, j) i : 멘토 j : 멘티 라고 가정하고, 모든 경우의 수와 대입해서 될 수 있는지 확인
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            let cnt = 0;
+            // 이차원 배열 탐색
+            for (let k = 0; k < m; k++) {
+              if (test[k].indexOf(i) < test[k].indexOf(j)) cnt++;
+            }
+            if (cnt === m) answer++;
+          }
+        }
         return answer;
       }
 
