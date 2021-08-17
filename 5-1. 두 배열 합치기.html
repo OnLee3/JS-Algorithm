@@ -7,6 +7,20 @@
     <script>
       function solution(arr1, arr2) {
         let answer = [];
+        let n = arr1.length;
+        let m = arr2.length;
+        let p1 = 0;
+        let p2 = 0;
+        // 두 배열중, 하나라도 끝에 도달하면 반복을 종료한다.
+        while (p1 < n && p2 < m) {
+          // 값을 집어넣은 배열은 우측으로 한칸씩 이동한다.
+          if (arr1[p1] <= arr2[p2]) answer.push(arr1[p1++]);
+          else answer.push(arr2[p2++]);
+        }
+        // 반복 종료시점 포인트 뒤에 있는 요소들을 전부 더한다.
+        while (p1 < n) answer.push(arr1[p1++]);
+        while (p2 < m) answer.push(arr2[p2++]);
+
         return answer;
       }
 
