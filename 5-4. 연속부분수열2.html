@@ -7,19 +7,16 @@
     <script>
       function solution(m, arr) {
         let answer = 0;
+        let lt = 0;
+        let sum = 0;
 
-        for (let p1 = 0; p1 < arr.length; p1++) {
-          let p2 = p1;
-          let sum = arr[p1];
-          while (sum <= 5) {
-            console.log(p1, p2, sum);
-            answer++;
-            p2++;
-            sum += arr[p2];
-            console.log(p1, p2, sum);
+        for (let rt = 0; rt < arr.length; rt++) {
+          sum += arr[rt];
+          while (sum > 5) {
+            sum -= arr[lt++];
           }
+          answer += rt - lt + 1;
         }
-
         return answer;
       }
 
