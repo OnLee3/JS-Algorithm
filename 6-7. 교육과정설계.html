@@ -10,7 +10,7 @@
         let queue = Array.from(need);
         for (let x of plan) {
           if (queue.includes(x)) {
-            if (x !== queue.shift()) return "NO";
+            if (queue.shift() !== x) return "NO";
           }
         }
         if (queue.length > 0) return "NO";
