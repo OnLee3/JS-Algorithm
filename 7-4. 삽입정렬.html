@@ -11,11 +11,9 @@
         for (let i = 1; i < arr.length; i++) {
           let tmp = arr[i];
           for (j = i - 1; j >= 0; j--) {
-            // 뒤로 밀어내기
             if (arr[j] > tmp) arr[j + 1] = arr[j];
             else break;
           }
-          // 값 삽입
           arr[j + 1] = tmp;
         }
         return answer;
@@ -23,6 +21,7 @@
 
       let arr = [11, 7, 5, 6, 10, 9];
       console.log(solution(arr));
+      console.log(this);
     </script>
   </body>
 </html>
