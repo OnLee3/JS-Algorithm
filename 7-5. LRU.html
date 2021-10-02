@@ -7,17 +7,20 @@
     <script>
       function solution(size, arr) {
         let answer = Array.from({ length: size }, (v) => 0);
-        arr.forEach((v) => {
+        for (let x of arr) {
           let pos = -1;
-          for (let i = 0; i < size; i++) if (answer[i] === v) pos = i;
+          for (let i = 0; i < size; i++) if (x === answer[i]) pos = i;
           if (pos === -1) {
-            answer.unshift(v);
-            if (answer.length > size) answer.pop();
+            for (let i = size - 1; i >= 1; i--) {
+              answer[i] = answer[i - 1];
+            }
           } else {
-            answer.splice(pos, 1);
-            answer.unshift(v);
+            for (let i = pos; i >= 1; i--) {
+              answer[i] = answer[i - 1];
+            }
           }
-        });
+          answer[0] = x;
+        }
         return answer;
       }
 
